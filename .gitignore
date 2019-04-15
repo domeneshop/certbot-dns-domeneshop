@@ -1,0 +1,10 @@
+.pytest_cache
+*.sublime-workspace
+__pycache__
+*.egg-info
+.tmp/
+.venv
+.vscode
+build/
+.mypy_cache
+dist/
