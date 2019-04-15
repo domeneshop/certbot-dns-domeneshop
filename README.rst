@@ -1,7 +1,7 @@
 certbot-dns-domeneshop
 ======================
 
-Domeneshop_ DNS Authenicator plugin for certbot_.
+Domeneshop_ DNS Authenticator plugin for certbot_.
 
 This plugin automates the process of completing a ``dns-01`` challenge by
 creating, and subsequently removing, TXT records using the `Domeneshop API`_.
