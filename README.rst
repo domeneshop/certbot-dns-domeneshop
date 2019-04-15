@@ -75,9 +75,9 @@ To acquire a single certificate for both ``example.com`` and
 
 .. code-block:: bash
 
-   certbot certonly \\
-     --authenticator certbot-dns-domeneshop:dns-domeneshop \\
-     --certbot-dns-domeneshop:dns-domeneshop-credentials ~/.secrets/certbot/domeneshop.ini \\
-     --certbot-dns-domeneshop:dns-domeneshop-propagation-seconds 30 \\
-     -d example.com \\
+   certbot certonly \
+     --authenticator certbot-dns-domeneshop:dns-domeneshop \
+     --certbot-dns-domeneshop:dns-domeneshop-credentials ~/.secrets/certbot/domeneshop.ini \
+     --certbot-dns-domeneshop:dns-domeneshop-propagation-seconds 30 \
+     -d example.com \
      -d www.example.com
