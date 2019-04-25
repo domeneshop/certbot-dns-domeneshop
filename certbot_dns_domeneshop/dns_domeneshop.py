@@ -4,7 +4,7 @@ import re
 
 import zope.interface
 
-from .domeneshop import Client as DomeneshopClient, DomeneshopError
+from domeneshop.client import Client as DomeneshopClient, DomeneshopError
 
 from certbot import errors
 from certbot import interfaces
@@ -52,8 +52,8 @@ class Authenticator(dns_common.DNSAuthenticator):
 
     def _get_domeneshop_client(self):
         return DomeneshopClient(
-            client_id=self.credentials.conf('client-token'),
-            client_secret=self.credentials.conf('client-secret')
+            token=self.credentials.conf('client-token'),
+            secret=self.credentials.conf('client-secret')
         )
 
     def _domain_id_from_guesses(self, provider_domains, domain_guesses, original_domain):
