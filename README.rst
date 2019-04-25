@@ -35,7 +35,7 @@ Credentials
 Use of this plugin requires a configuration file containing Domeneshop API
 credentials.
 
-See the `Domeneshop API`_ documentation for more information.
+See the `Domeneshop API`_ documentation for more information (in Norwegian).
 
 An example ``credentials.ini`` file:
 
