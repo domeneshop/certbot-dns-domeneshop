@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 version = "0.2.6"
 
 install_requires = [
-    "domeneshop>=0.2.0",
+    "domeneshop>=0.4.2",
     "acme>=0.21.1",
     "certbot>=0.21.1",
     "setuptools",
