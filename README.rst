@@ -16,7 +16,7 @@ Named Arguments
 
 ================================================================  =====================================
 ``--certbot-dns-domeneshop:dns-domeneshop-credentials``           domeneshop credentials_ INI file. **(required)**
-``--certbot-dns-domeneshop:dns-domeneshop-propagation-seconds``   The number of seconds to wait for DNS to propagate before asking the ACME server to verify the DNS record(Default: 30)
+``--certbot-dns-domeneshop:dns-domeneshop-propagation-seconds``   The number of seconds to wait for DNS to propagate before asking the ACME server to verify the DNS record(Default: 120)
 ================================================================  =====================================
 
 Note that the seemingly redundant ``certbot-dns-domeneshop:`` prefix is imposed by
@@ -71,13 +71,13 @@ Examples
 --------
 
 To acquire a single certificate for both ``example.com`` and
-``www.example.com``, waiting 30 seconds for DNS propagation (the default):
+``www.example.com``, waiting 120 seconds for DNS propagation (the default):
 
 .. code-block:: bash
 
    certbot certonly \
      --authenticator certbot-dns-domeneshop:dns-domeneshop \
      --certbot-dns-domeneshop:dns-domeneshop-credentials ~/.secrets/certbot/domeneshop.ini \
-     --certbot-dns-domeneshop:dns-domeneshop-propagation-seconds 30 \
+     --certbot-dns-domeneshop:dns-domeneshop-propagation-seconds 120 \
      -d example.com \
      -d www.example.com
