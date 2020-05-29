@@ -13,8 +13,8 @@ install_requires = [
 
 dev_extras = ["black", "mypy", "prospector"]
 
-with open('README.rst', 'rb') as f:
-    long_description = f.read().decode('utf-8')
+with open("README.rst", "rb") as f:
+    long_description = f.read().decode("utf-8")
 
 setup(
     name="certbot-dns-domeneshop",
