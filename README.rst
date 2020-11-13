@@ -22,6 +22,8 @@ Named Arguments
 Note that the seemingly redundant ``certbot-dns-domeneshop:`` prefix is imposed by
 certbot for external plugins.
 
+If you are using certbot **1.7.0** or higher, it is possible to use the unprefixed arguments and configuration options in `credentials.ini`. See the second example below.
+
 Installation
 ------------
 
@@ -81,3 +83,16 @@ To acquire a single certificate for both ``example.com`` and
      --certbot-dns-domeneshop:dns-domeneshop-propagation-seconds 120 \
      -d example.com \
      -d www.example.com
+
+If you are using certbot **1.7.0** (released on august 4, 2020) or higher, you can now call the plugin without the prefix:
+
+.. code-block:: bash
+
+   certbot certonly \
+     --authenticator dns-domeneshop \
+     --dns-domeneshop-credentials ~/.secrets/certbot/domeneshop.ini \
+     --dns-domeneshop-propagation-seconds 120 \
+     -d example.com \
+     -d www.example.com
+
+In this second example, make sure you are also removing the prefixes in `~/.secrets/certbot/domeneshop.ini`. Certbot will fail to discover your credentials otherwise.
