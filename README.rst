@@ -15,14 +15,11 @@ Named Arguments
 ---------------
 
 ================================================================  =====================================
-``--certbot-dns-domeneshop:dns-domeneshop-credentials``           domeneshop credentials_ INI file. **(required)**
-``--certbot-dns-domeneshop:dns-domeneshop-propagation-seconds``   The number of seconds to wait for DNS to propagate before asking the ACME server to verify the DNS record(Default: 120)
+``--dns-domeneshop-credentials``                                  domeneshop credentials_ INI file. **(required)**
+``--dns-domeneshop-propagation-seconds``                          The number of seconds to wait for DNS to propagate before asking the ACME server to verify the DNS record(Default: 120)
 ================================================================  =====================================
 
-Note that the seemingly redundant ``certbot-dns-domeneshop:`` prefix is imposed by
-certbot for external plugins.
-
-If you are using certbot **1.7.0** or higher, it is possible to use the unprefixed arguments and configuration options in `credentials.ini`. See the second example below.
+Note that for certbot **1.6.0** and older, a prefix (``certbot-dns-domeneshop:``) is required in front of the arguments, see the examples below. The prefix is also required in the credentials file.
 
 Installation
 ------------
@@ -43,11 +40,11 @@ An example ``credentials.ini`` file:
 
 .. code-block:: ini
 
-   certbot_dns_domeneshop:dns_domeneshop_client_token=1234567890abcdef
-   certbot_dns_domeneshop:dns_domeneshop_client_secret=1234567890abcdefghijklmnopqrstuvxyz1234567890abcdefghijklmnopqrs
+   dns_domeneshop_client_token=1234567890abcdef
+   dns_domeneshop_client_secret=1234567890abcdefghijklmnopqrstuvxyz1234567890abcdefghijklmnopqrs
 
 The path to this file can be provided interactively or using the
-``--certbot-dns-domeneshop:dns-domeneshop-credentials`` command-line argument. Certbot
+``--dns-domeneshop-credentials`` command-line argument. Certbot
 records the path to this file for use during renewal, but does not store the
 file's contents.
 
@@ -78,21 +75,21 @@ To acquire a single certificate for both ``example.com`` and
 .. code-block:: bash
 
    certbot certonly \
-     --authenticator certbot-dns-domeneshop:dns-domeneshop \
-     --certbot-dns-domeneshop:dns-domeneshop-credentials ~/.secrets/certbot/domeneshop.ini \
-     --certbot-dns-domeneshop:dns-domeneshop-propagation-seconds 120 \
-     -d example.com \
-     -d www.example.com
-
-If you are using certbot **1.7.0** (released on august 4, 2020) or higher, you can now call the plugin without the prefix:
-
-.. code-block:: bash
-
-   certbot certonly \
      --authenticator dns-domeneshop \
      --dns-domeneshop-credentials ~/.secrets/certbot/domeneshop.ini \
      --dns-domeneshop-propagation-seconds 120 \
      -d example.com \
      -d www.example.com
 
-In this second example, make sure you are also removing the prefixes in `~/.secrets/certbot/domeneshop.ini`. Certbot will fail to discover your credentials otherwise.
+If you are using certbot **1.6.0** or older, you should call the plugin with prefixes the prefix:
+
+.. code-block:: bash
+
+   certbot certonly \
+     --authenticator certbot-dns-domeneshop:dns-domeneshop \
+     --certbot-dns-domeneshop:dns-domeneshop-credentials ~/.secrets/certbot/domeneshop.ini \
+     --certbot-dns-domeneshop:dns-domeneshop-propagation-seconds 120 \
+     -d example.com \
+     -d www.example.com
+
+In this second example, make sure you are also adding the prefixes in `~/.secrets/certbot/domeneshop.ini` (e.g. `certbot-dns-domeneshop:dns_domeneshop_client_token```). Certbot will fail to discover your credentials otherwise.
