@@ -2,12 +2,9 @@
 import logging
 import re
 
-import zope.interface
-
 from domeneshop.client import Client as DomeneshopClient, DomeneshopError
 
 from certbot import errors
-from certbot import interfaces
 from certbot.plugins import dns_common
 
 logger = logging.getLogger(__name__)
@@ -15,8 +12,6 @@ logger = logging.getLogger(__name__)
 HELP_URL = "https://api.domeneshop.no/docs"
 
 
-@zope.interface.implementer(interfaces.IAuthenticator)
-@zope.interface.provider(interfaces.IPluginFactory)
 class Authenticator(dns_common.DNSAuthenticator):
     """DNS Authenticator for Domeneshop
     This Authenticator uses the Domeneshop API to fulfill a dns-01 challenge.
@@ -111,6 +106,7 @@ class Authenticator(dns_common.DNSAuthenticator):
                     e
                 )
             )
+
     def _cleanup(
         self, domain, validation_name, validation
     ):  # pylint: disable=arguments-differ
