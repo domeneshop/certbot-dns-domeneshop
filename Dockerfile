@@ -1,5 +1,5 @@
 ARG VERSION=v2.7.4
-FROM certbot/certbot:2.8.0
+FROM certbot/certbot:latest
 
 ENV PYTHONIOENCODING="UTF-8"
 

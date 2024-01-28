@@ -93,3 +93,24 @@ If you are using certbot **1.6.0** or older, you should call the plugin with pre
      -d www.example.com
 
 In this second example, make sure you are also adding the prefixes in `~/.secrets/certbot/domeneshop.ini` (e.g. `certbot-dns-domeneshop:dns_domeneshop_client_token```). Certbot will fail to discover your credentials otherwise.
+
+
+By Andreas: 
+
+Added dockerfile to build and run this plugin in Docker.
+
+.. code-block:: bash 
+
+docker run --rm \
+  -v /var/lib/letsencrypt:/var/lib/letsencrypt \
+  -v /etc/letsencrypt:/etc/letsencrypt \
+  --cap-drop=all \
+  "YOUR DOCKER IMAGE LOCATION" \
+    --authenticator dns-domeneshop \
+    --dns-domeneshop-propagation-seconds 900 \
+    --dns-domeneshop-ttl 600 \
+    --dns-domeneshop-credentials /var/lib/letsencrypt/domeneshop_credentials.ini \
+    --keep-until-expiring --non-interactive --expand \
+    --server https://acme-v02.api.letsencrypt.org/directory \
+    --agree-tos --email "webmaster@example.com" \
+    -d example.com -d '*.example.com'
