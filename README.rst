@@ -95,9 +95,8 @@ If you are using certbot **1.6.0** or older, you should call the plugin with pre
 In this second example, make sure you are also adding the prefixes in `~/.secrets/certbot/domeneshop.ini` (e.g. `certbot-dns-domeneshop:dns_domeneshop_client_token```). Certbot will fail to discover your credentials otherwise.
 
 
-By Andreas: 
 
-Added dockerfile to build and run this plugin in Docker.
+You can also run this in Docker, by building an image using the Dockerfile. Then 
 
 .. code-block:: bash 
 
