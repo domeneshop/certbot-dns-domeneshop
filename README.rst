@@ -96,7 +96,8 @@ In this second example, make sure you are also adding the prefixes in `~/.secret
 
 
 
-You can also run this in Docker, by building an image using the Dockerfile. Then 
+You can also run this in Docker, by building an image using the Dockerfile.
+The example below is a command for a wildcard sertification. 
 
 .. code-block:: bash 
 
