@@ -100,16 +100,16 @@ You can also run this in Docker, by building an image using the Dockerfile. Then
 
 .. code-block:: bash 
 
-docker run --rm \
-  -v /var/lib/letsencrypt:/var/lib/letsencrypt \
-  -v /etc/letsencrypt:/etc/letsencrypt \
-  --cap-drop=all \
-  "YOUR DOCKER IMAGE LOCATION" \
-    --authenticator dns-domeneshop \
-    --dns-domeneshop-propagation-seconds 900 \
-    --dns-domeneshop-ttl 600 \
-    --dns-domeneshop-credentials /var/lib/letsencrypt/domeneshop_credentials.ini \
-    --keep-until-expiring --non-interactive --expand \
-    --server https://acme-v02.api.letsencrypt.org/directory \
-    --agree-tos --email "webmaster@example.com" \
-    -d example.com -d '*.example.com'
+   docker run --rm \
+     -v /var/lib/letsencrypt:/var/lib/letsencrypt \
+     -v /etc/letsencrypt:/etc/letsencrypt \
+     --cap-drop=all \
+     "YOUR DOCKER IMAGE LOCATION" \
+       --authenticator dns-domeneshop \
+       --dns-domeneshop-propagation-seconds 900 \
+       --dns-domeneshop-ttl 600 \
+       --dns-domeneshop-credentials /var/lib/letsencrypt/domeneshop_credentials.ini \
+       --keep-until-expiring --non-interactive --expand \
+       --server https://acme-v02.api.letsencrypt.org/directory \
+       --agree-tos --email "webmaster@example.com" \
+       -d example.com -d '*.example.com'
