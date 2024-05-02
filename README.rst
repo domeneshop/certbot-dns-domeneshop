@@ -8,6 +8,7 @@ creating, and subsequently removing, TXT records using the `Domeneshop API`_.
 
 .. _domeneshop: https://domene.shop
 .. _`Domeneshop API`: https://api.domeneshop.no/docs
+.. _`Docker Hub`: https://hub.docker.com/r/domeneshop/certbot-dns-domeneshop
 .. _certbot: https://certbot.eff.org/
 
 
@@ -92,4 +93,24 @@ If you are using certbot **1.6.0** or older, you should call the plugin with pre
      -d example.com \
      -d www.example.com
 
-In this second example, make sure you are also adding the prefixes in `~/.secrets/certbot/domeneshop.ini` (e.g. `certbot-dns-domeneshop:dns_domeneshop_client_token```). Certbot will fail to discover your credentials otherwise.
+In this second example, make sure you are also adding the prefixes in ``~/.secrets/certbot/domeneshop.ini`` (e.g. ``certbot-dns-domeneshop:dns_domeneshop_client_token``). Certbot will fail to discover your credentials otherwise.
+
+Docker image
+------------
+
+A docker image is also available on `Docker Hub`_.
+
+Example usage (where the local directory ``/etc/letsencrypt/domeneshop.ini`` contains your secrets):
+
+.. code-block:: bash
+
+   docker run --rm \
+     -v /etc/letsencrypt:/etc/letsencrypt \
+     -v /var/lib/letsencrypt:/var/lib/letsencrypt \
+     domeneshop/certbot-dns-domeneshop \
+     certonly \
+     --authenticator dns-domeneshop \
+     --dns-domeneshop-credentials /etc/letsencrypt/domeneshop.ini \
+     --agree-tos \
+     --email "email@example.com" \
+     -d example.com
